@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عالم غامبول المدهش</title>
+<link rel="icon" href="/orglogo.png">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Cairo,sans-serif}
+body{background:#050505;color:#fff}
+#loader{position:fixed;inset:0;background:#000;display:flex;justify-content:center;align-items:center;flex-direction:column}
+.spinner{width:90px;height:90px;border:7px solid #222;border-top:7px solid #00BFFF;border-radius:50%;animation:s 1s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+#main{display:none;padding:25px}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+a{color:#fff;text-decoration:none}
+.layout{display:grid;grid-template-columns:3fr 1fr;gap:20px}
+video{width:100%;aspect-ratio:16/9;background:#000}
+.sidebar{background:#111;padding:15px;border-radius:12px}
+select,.episode{width:100%;padding:10px;margin-bottom:10px;background:#222;color:#fff;border:none;border-radius:8px;cursor:pointer}
+@media(max-width:900px){.layout{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div id="loader"><div class="spinner"></div><h2>Loading...</h2></div>
+<div id="main">
+<header><a href="../">🏠 الرئيسية</a><h1 style="color:#00BFFF">عالم غامبول المدهش</h1></header>
+<div class="layout">
+<div><video id="player" controls><source id="videoSource"></video></div>
+<div class="sidebar">
+<select id="seasonSelect"></select>
+<div id="episodeList"></div>
+</div></div></div>
+<script>
+const seasons={
+1:[
+{title:"الحلقة 1",video:"https://www.w3schools.com/html/mov_bbb.mp4"},
+{title:"الحلقة 2",video:"https://www.w3schools.com/html/movie.mp4"},
+{title:"الحلقة 3",video:"https://www.w3schools.com/html/mov_bbb.mp4"}
+],
+2:[],3:[],4:[],5:[],6:[]
+};
+const sel=document.getElementById("seasonSelect"),list=document.getElementById("episodeList"),player=document.getElementById("player");
+Object.keys(seasons).forEach(s=>{let o=document.createElement("option");o.value=s;o.textContent="الموسم "+s;sel.appendChild(o);});
+function loadSeason(s){list.innerHTML="";seasons[s].forEach(ep=>{let b=document.createElement("button");b.className="episode";b.textContent=ep.title;b.onclick=()=>{player.src=ep.video;player.play();};list.appendChild(b);});}
+sel.onchange=()=>loadSeason(sel.value);
+loadSeason(1);
+setTimeout(()=>{loader.style.display="none";main.style.display="block";},2500);
+</script>
+</body></html>
