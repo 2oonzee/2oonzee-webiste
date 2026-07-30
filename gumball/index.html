@@ -455,24 +455,33 @@ skip_next
 // Gumball Player V2
 // ----------------------------
 
-const seasons = {
-    1: [
-        {
-            title: "الحلقة 1",
-            file: "../videos/gumball/season-1/episode-1.mp4"
-        },
-        {
-            title: "الحلقة 2",
-            file: "../videos/gumball/season-1/episode-2.mp4"
-        },
-        {
-            title: "الحلقة 3",
-            file: "../videos/gumball/season-1/episode-3.mp4"
-        }
-    ]
+function createEpisodes(season, count) {
+    const episodes = [];
 
-    // Add more seasons here
-    // 2: [...]
+    for (let i = 1; i <= count; i++) {
+        episodes.push({
+            title: `الحلقة ${i}`,
+            file: `../videos/gumball/season-${season}/episode-${i}.mp4`
+        });
+    }
+
+    return episodes;
+}
+
+const seasons = {
+
+    1: createEpisodes(1, 36),
+
+    2: createEpisodes(2, 40),
+
+    3: createEpisodes(3, 40),
+
+    4: createEpisodes(4, 40),
+
+    5: createEpisodes(5, 40),
+
+    6: createEpisodes(6, 44)
+
 };
 
 const player = new Plyr("#player");
