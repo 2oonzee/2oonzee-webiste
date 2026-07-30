@@ -74,21 +74,39 @@ gap:20px;
 }
 
 .home-btn{
-display:flex;
-align-items:center;
-gap:10px;
-background:#10283a;
-padding:12px 20px;
-border-radius:14px;
-border:1px solid rgba(40,199,255,.35);
-transition:.25s;
-font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    background:linear-gradient(135deg,#28c7ff,#0a8cff);
+
+    color:#fff;
+
+    padding:14px 24px;
+
+    border-radius:15px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:all .3s ease;
+
+    box-shadow:0 8px 25px rgba(40,199,255,.35);
 }
 
 .home-btn:hover{
-background:#16384f;
-transform:translateY(-2px);
-box-shadow:0 0 20px rgba(40,199,255,.35);
+    transform:translateY(-3px) scale(1.05);
+
+    background:linear-gradient(135deg,#35d0ff,#1496ff);
+
+    box-shadow:0 12px 35px rgba(40,199,255,.55);
+}
+
+.home-btn:active{
+    transform:scale(.97);
 }
 
 header h1{
@@ -301,14 +319,16 @@ padding:15px;
 
 <a href="../" class="home-btn">
 
-<span class="material-icons-rounded">
-home
-</span>
+<span class="material-icons-rounded">home</span>
 
-الرئيسية
+<span>العودة للرئيسية</span>
 
 </a>
 
+<h1>عالم غامبول المدهش</h1>
+
+</header>
+    
 <h1>
 
 عالم غامبول المدهش
