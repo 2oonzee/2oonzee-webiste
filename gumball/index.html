@@ -4,47 +4,646 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>عالم غامبول المدهش</title>
+
 <link rel="icon" href="/orglogo.png">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Rounded" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css"/>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Cairo,sans-serif}
-body{background:#050505;color:#fff}
-#loader{position:fixed;inset:0;background:#000;display:flex;justify-content:center;align-items:center;flex-direction:column}
-.spinner{width:90px;height:90px;border:7px solid #222;border-top:7px solid #00BFFF;border-radius:50%;animation:s 1s linear infinite}
-@keyframes s{to{transform:rotate(360deg)}}
-#main{display:none;padding:25px}
-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-a{color:#fff;text-decoration:none}
-.layout{display:grid;grid-template-columns:3fr 1fr;gap:20px}
-video{width:100%;aspect-ratio:16/9;background:#000}
-.sidebar{background:#111;padding:15px;border-radius:12px}
-select,.episode{width:100%;padding:10px;margin-bottom:10px;background:#222;color:#fff;border:none;border-radius:8px;cursor:pointer}
-@media(max-width:900px){.layout{grid-template-columns:1fr}}
-</style></head>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+body{
+background:#07131d;
+color:#fff;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:white;
+}
+
+#loader{
+position:fixed;
+inset:0;
+background:#07131d;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.loader-circle{
+width:90px;
+height:90px;
+border-radius:50%;
+border:8px solid #17384d;
+border-top-color:#28c7ff;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+to{
+transform:rotate(360deg);
+}
+}
+
+#main{
+display:none;
+padding:25px;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+gap:20px;
+}
+
+.home-btn{
+display:flex;
+align-items:center;
+gap:10px;
+background:#10283a;
+padding:12px 20px;
+border-radius:14px;
+border:1px solid rgba(40,199,255,.35);
+transition:.25s;
+font-weight:700;
+}
+
+.home-btn:hover{
+background:#16384f;
+transform:translateY(-2px);
+box-shadow:0 0 20px rgba(40,199,255,.35);
+}
+
+header h1{
+font-size:32px;
+color:#28c7ff;
+}
+
+.banner{
+height:220px;
+border-radius:22px;
+overflow:hidden;
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
+url("https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1600&auto=format&fit=crop");
+background-size:cover;
+background-position:center;
+margin-bottom:25px;
+display:flex;
+align-items:end;
+}
+
+.overlay{
+padding:35px;
+}
+
+.overlay h2{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.overlay p{
+font-size:18px;
+opacity:.85;
+}
+
+.container{
+display:grid;
+grid-template-columns:2fr 360px;
+gap:25px;
+}
+
+.player-card{
+background:#10202c;
+padding:18px;
+border-radius:22px;
+box-shadow:0 0 30px rgba(0,0,0,.25);
+}
+
+video{
+width:100%;
+aspect-ratio:16/9;
+background:black;
+border-radius:18px;
+}
+
+.player-actions{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:15px;
+margin-top:18px;
+}
+
+.player-actions button{
+height:52px;
+border:none;
+border-radius:14px;
+background:#1b3649;
+color:white;
+font-size:16px;
+cursor:pointer;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+transition:.25s;
+}
+
+.player-actions button:hover{
+background:#28c7ff;
+color:#00151d;
+}
+
+.now-playing{
+margin-top:22px;
+background:#132c3f;
+padding:18px;
+border-radius:16px;
+}
+
+.now-playing h3{
+color:#28c7ff;
+margin-bottom:8px;
+}
+
+.sidebar{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.box{
+background:#10202c;
+padding:18px;
+border-radius:18px;
+}
+
+.box h3{
+margin-bottom:15px;
+color:#28c7ff;
+}
+
+select{
+width:100%;
+height:50px;
+background:#17384d;
+border:none;
+border-radius:12px;
+color:white;
+padding:0 15px;
+font-size:16px;
+}
+
+#episodeList{
+display:flex;
+flex-direction:column;
+gap:12px;
+max-height:600px;
+overflow-y:auto;
+padding-right:5px;
+}
+
+.episode{
+background:#17384d;
+padding:14px;
+border-radius:12px;
+cursor:pointer;
+transition:.25s;
+font-weight:700;
+}
+
+.episode:hover{
+background:#28c7ff;
+color:#00131d;
+}
+
+.episode.active{
+background:#28c7ff;
+color:#00131d;
+}
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#28c7ff;
+border-radius:50px;
+}
+
+@media(max-width:950px){
+
+header{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.banner{
+height:160px;
+}
+
+.overlay h2{
+font-size:24px;
+}
+
+.container{
+grid-template-columns:1fr;
+}
+
+.player-actions{
+grid-template-columns:1fr;
+}
+
+header h1{
+font-size:26px;
+}
+
+#main{
+padding:15px;
+}
+
+}
+
+</style>
+
+</head>
+
 <body>
-<div id="loader"><div class="spinner"></div><h2>Loading...</h2></div>
+
+<div id="loader">
+
+<div class="loader-circle"></div>
+
+<h2>Loading...</h2>
+
+</div>
+
 <div id="main">
-<header><a href="../">🏠 الرئيسية</a><h1 style="color:#00BFFF">عالم غامبول المدهش</h1></header>
-<div class="layout">
-<div><video id="player" controls><source id="videoSource"></video></div>
-<div class="sidebar">
-<select id="seasonSelect"></select>
-<div id="episodeList"></div>
-</div></div></div>
+
+<header>
+
+<a href="../" class="home-btn">
+
+<span class="material-icons-rounded">
+home
+</span>
+
+الرئيسية
+
+</a>
+
+<h1>
+
+عالم غامبول المدهش
+
+</h1>
+
+</header>
+
+
+<section class="banner">
+
+<div class="overlay">
+
+<h2>
+
+شاهد جميع حلقات غامبول
+
+</h2>
+
+<p>
+
+اختر الموسم ثم الحلقة واستمتع بالمشاهدة.
+
+</p>
+
+</div>
+
+</section>
+
+
+<div class="container">
+
+
+<div class="player-card">
+
+<video id="player" playsinline controls>
+
+<source id="videoSource">
+
+</video>
+
+<div class="player-actions">
+
+<button id="prevEpisode">
+
+<span class="material-icons-rounded">
+
+skip_previous
+
+</span>
+
+الحلقة السابقة
+
+</button>
+
+<button id="downloadEpisode">
+
+<span class="material-icons-rounded">
+
+download
+
+</span>
+
+تحميل الحلقة
+
+</button>
+
+<button id="nextEpisode">
+
+الحلقة التالية
+
+<span class="material-icons-rounded">
+
+skip_next
+
+</span>
+
+</button>
+
+</div>
+
+
+<div class="now-playing">
+
+<h3>
+
+يعرض الآن
+
+</h3>
+
+<p id="episodeTitle">
+
+اختر حلقة
+
+</p>
+
+</div>
+
+</div>
+
+
+<aside class="sidebar">
+
+<div class="box">
+
+<h3>
+
+المواسم
+
+</h3>
+
+<select id="seasonSelect">
+
+</select>
+
+</div>
+
+<div class="box">
+
+<h3>
+
+الحلقات
+
+</h3>
+
+<div id="episodeList">
+
+</div>
+
+</div>
+
+</aside>
+
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.polyfilled.js"></script>
+
 <script>
-const seasons={
-1:[
-{title:"الحلقة 1",video:"https://strm5.uqload.is/hls2/04/03678/wfivylusg2ez_n/index-v1-a1.m3u8?t=12-Jf91DjBwwonvnH3rYurlkyiPLIMV5HMO_YrZ3TB8&s=1785336147&e=43200&v=1716113&i=0.0&sp=0"},
-{title:"الحلقة 2",video:"https://strm2.uqload.is/hls2/02/03678/t6t2axs96vwc_n/index-v1-a1.m3u8?t=7tlralrsp5VF6KAZ16aYVAh-98_VK8mrDaCQU_XUK0E&s=1785336245&e=43200&v=1719263&i=0.0&sp=0"},
-{title:"الحلقة 3",video:"https://strm2.uqload.is/hls2/02/03678/egnqrx10ghbh_n/index-v1-a1.m3u8?t=cGCTVrDS9E_iiGmcumUrqpAZJwTbQKf5wP0od9tVinE&s=1785336394&e=43200&v=1724330&i=0.0&sp=0"}
-],
-2:[],3:[],4:[],5:[],6:[]
+
+// ----------------------------
+// Gumball Player V2
+// ----------------------------
+
+const seasons = {
+    1: [
+        {
+            title: "الحلقة 1",
+            file: "../videos/gumball/season-1/episode-1.mp4"
+        },
+        {
+            title: "الحلقة 2",
+            file: "../videos/gumball/season-1/episode-2.mp4"
+        },
+        {
+            title: "الحلقة 3",
+            file: "../videos/gumball/season-1/episode-3.mp4"
+        }
+    ]
+
+    // Add more seasons here
+    // 2: [...]
 };
-const sel=document.getElementById("seasonSelect"),list=document.getElementById("episodeList"),player=document.getElementById("player");
-Object.keys(seasons).forEach(s=>{let o=document.createElement("option");o.value=s;o.textContent="الموسم "+s;sel.appendChild(o);});
-function loadSeason(s){list.innerHTML="";seasons[s].forEach(ep=>{let b=document.createElement("button");b.className="episode";b.textContent=ep.title;b.onclick=()=>{player.src=ep.video;player.play();};list.appendChild(b);});}
-sel.onchange=()=>loadSeason(sel.value);
-loadSeason(1);
-setTimeout(()=>{loader.style.display="none";main.style.display="block";},2500);
+
+const player = new Plyr("#player");
+
+const video = document.getElementById("player");
+const source = document.getElementById("videoSource");
+
+const seasonSelect = document.getElementById("seasonSelect");
+const episodeList = document.getElementById("episodeList");
+
+const episodeTitle = document.getElementById("episodeTitle");
+
+const prevBtn = document.getElementById("prevEpisode");
+const nextBtn = document.getElementById("nextEpisode");
+const downloadBtn = document.getElementById("downloadEpisode");
+
+let currentSeason = 1;
+let currentEpisode = 0;
+
+// ----------------------------
+// Fill Seasons
+// ----------------------------
+
+for (const season in seasons) {
+
+    const option = document.createElement("option");
+
+    option.value = season;
+
+    option.textContent = "الموسم " + season;
+
+    seasonSelect.appendChild(option);
+
+}
+
+// ----------------------------
+// Load Episode List
+// ----------------------------
+
+function loadEpisodes() {
+
+    episodeList.innerHTML = "";
+
+    const list = seasons[currentSeason];
+
+    list.forEach((ep, index) => {
+
+        const div = document.createElement("div");
+
+        div.className = "episode";
+
+        if(index === currentEpisode){
+
+            div.classList.add("active");
+
+        }
+
+        div.textContent = ep.title;
+
+        div.onclick = () => {
+
+            currentEpisode = index;
+
+            playEpisode();
+
+        };
+
+        episodeList.appendChild(div);
+
+    });
+
+}
+
+// ----------------------------
+// Play Episode
+// ----------------------------
+
+function playEpisode(){
+
+    const ep = seasons[currentSeason][currentEpisode];
+
+    source.src = ep.file;
+
+    video.load();
+
+    episodeTitle.textContent =
+        "الموسم " +
+        currentSeason +
+        " • " +
+        ep.title;
+
+    downloadBtn.onclick = () => {
+
+        window.open(ep.file);
+
+    };
+
+    loadEpisodes();
+
+}
+
+// ----------------------------
+// Season Change
+// ----------------------------
+
+seasonSelect.onchange = () => {
+
+    currentSeason = Number(seasonSelect.value);
+
+    currentEpisode = 0;
+
+    playEpisode();
+
+};
+
+// ----------------------------
+// Previous
+// ----------------------------
+
+prevBtn.onclick = () => {
+
+    if(currentEpisode > 0){
+
+        currentEpisode--;
+
+        playEpisode();
+
+    }
+
+};
+
+// ----------------------------
+// Next
+// ----------------------------
+
+nextBtn.onclick = () => {
+
+    if(currentEpisode < seasons[currentSeason].length - 1){
+
+        currentEpisode++;
+
+        playEpisode();
+
+    }
+
+};
+
+// ----------------------------
+// Loader
+// ----------------------------
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document.getElementById("loader").style.display="none";
+
+        document.getElementById("main").style.display="block";
+
+    },700);
+
+});
+
+// ----------------------------
+// Start
+// ----------------------------
+
+playEpisode();
+
 </script>
-</body></html>
+
+</body>
+
+</html>
