@@ -54,20 +54,13 @@ a{
 
 }
 
-.banner-overlay h2{
+.logo{
 
-    font-size:40px;
+    font-size:34px;
 
     font-weight:800;
 
-    color:#4fc3ff;
-
-    text-shadow:
-        0 0 6px rgba(79,195,255,.9),
-        0 0 14px rgba(79,195,255,.7),
-        0 0 28px rgba(0,162,255,.5);
-
-    margin-bottom:10px;
+    color:#fff;
 
 }
 
