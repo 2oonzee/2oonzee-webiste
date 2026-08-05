@@ -641,3 +641,97 @@ justify-content:center;
     }
 
 }
+
+/* ============================
+   Video.js - Stardima Theme
+============================ */
+
+.video-js{
+
+    border-radius:20px !important;
+
+    overflow:hidden;
+
+    background:#000;
+
+}
+
+.video-js .vjs-control-bar{
+
+    background:rgba(8,18,30,.95);
+
+    backdrop-filter:blur(8px);
+
+    height:52px;
+
+}
+
+.video-js .vjs-big-play-button{
+
+    border:none !important;
+
+    border-radius:50% !important;
+
+    width:90px;
+
+    height:90px;
+
+    line-height:90px !important;
+
+    left:50% !important;
+
+    top:50% !important;
+
+    transform:translate(-50%,-50%);
+
+    background:rgba(18,147,255,.90);
+
+    transition:.25s;
+
+    font-size:40px;
+
+}
+
+.video-js .vjs-big-play-button:hover{
+
+    background:#0d7ce0;
+
+    transform:translate(-50%,-50%) scale(1.08);
+
+}
+
+.video-js .vjs-play-progress{
+
+    background:#1293ff;
+
+}
+
+.video-js .vjs-volume-level{
+
+    background:#1293ff;
+
+}
+
+.video-js .vjs-slider{
+
+    background:#29465e;
+
+}
+
+.video-js .vjs-load-progress{
+
+    background:#4a5f72;
+
+}
+
+.video-js .vjs-control{
+
+    color:white;
+
+}
+
+.video-js .vjs-control:hover{
+
+    color:#4fc3ff;
+
+}
