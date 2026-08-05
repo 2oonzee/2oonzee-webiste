@@ -74,39 +74,39 @@ a{
 
     align-items:center;
 
-    justify-content:center;
+    gap:12px;
 
-    gap:10px;
+    padding:12px 22px;
 
-    padding:12px 24px;
+    background:#102233;
 
-    background:linear-gradient(135deg,#2b8cff,#006cff);
+    border:2px solid #234965;
 
-    color:#fff;
+    border-radius:16px;
 
-    border-radius:999px;
+    color:#ffffff;
 
     font-weight:700;
 
-    font-size:16px;
+    transition:.25s;
 
-    box-shadow:0 8px 18px rgba(0,120,255,.35);
+}
 
-    transition:.25s ease;
+.home-btn svg{
+
+    width:22px;
+
+    height:22px;
 
 }
 
 .home-btn:hover{
 
+    background:#18364c;
+
+    border-color:#2b8cff;
+
     transform:translateY(-2px);
-
-    box-shadow:0 12px 24px rgba(0,120,255,.45);
-
-}
-
-.home-btn:active{
-
-    transform:scale(.98);
 
 }
 
