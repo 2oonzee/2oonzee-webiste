@@ -308,6 +308,22 @@ a{
 
 }
 
+.episode-card{
+
+    background:#102233;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
 /* ============================
    Sidebar
 ============================ */
