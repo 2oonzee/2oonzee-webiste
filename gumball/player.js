@@ -72,7 +72,7 @@ function playEpisode(episode){
     episodeTitle.textContent = episode.title;
 
     episodeDescription.textContent =
-    "استمتع بالمشاهدة على Stardima";
+"نتمنى لكم مشاهدة ممتعة، ويمكنكم تحميل الحلقة والاحتفاظ بها للمشاهدة لاحقًا.";
 
     player.src({
 
