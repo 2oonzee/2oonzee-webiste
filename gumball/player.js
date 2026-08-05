@@ -1,66 +1,59 @@
 // ===============================
-// Stardima Player System V2
+// Stardima - Gumball Player
 // ===============================
+
+const player = videojs('videoPlayer');
 
 const seasonSelect = document.getElementById("seasonSelect");
 const episodeList = document.getElementById("episodeList");
 
 const episodeTitle = document.getElementById("episodeTitle");
 const episodeDescription = document.getElementById("episodeDescription");
-
 const downloadBtn = document.getElementById("downloadBtn");
 
-const modal = document.getElementById("playerModal");
-const closeModal = document.getElementById("closeModal");
-
-const playerOne = document.getElementById("playerOne");
-const playerTwo = document.getElementById("playerTwo");
-const playerThree = document.getElementById("playerThree");
-
 let currentSeason = 1;
-let currentEpisode = null;
 
-// ----------------------------
-// Fill Seasons
-// ----------------------------
+// ===============================
+// Load Seasons
+// ===============================
 
-for(const season in seasons){
+function loadSeasons(){
 
-    const option = document.createElement("option");
+    seasonSelect.innerHTML = "";
 
-    option.value = season;
+    Object.keys(seasons).forEach(season=>{
 
-    option.textContent = "الموسم " + season;
+        const option = document.createElement("option");
 
-    seasonSelect.appendChild(option);
+        option.value = season;
+
+        option.textContent = "الموسم " + season;
+
+        seasonSelect.appendChild(option);
+
+    });
 
 }
 
-// ----------------------------
+// ===============================
 // Load Episodes
-// ----------------------------
+// ===============================
 
 function loadEpisodes(){
 
     episodeList.innerHTML = "";
 
-    seasons[currentSeason].forEach((ep,index)=>{
+    seasons[currentSeason].forEach((episode,index)=>{
 
         const div = document.createElement("div");
 
         div.className = "episode";
 
-        div.innerHTML = `
-        ▶ ${ep.title}
-        `;
+        div.textContent = episode.title;
 
         div.onclick = ()=>{
 
-            currentEpisode = index;
-
-            updateEpisode();
-
-            openPlayerPopup();
+            playEpisode(episode);
 
         };
 
@@ -70,128 +63,51 @@ function loadEpisodes(){
 
 }
 
-// ----------------------------
-// Update Episode
-// ----------------------------
+// ===============================
+// Play Episode
+// ===============================
 
-function updateEpisode(){
+function playEpisode(episode){
 
-    const ep = seasons[currentSeason][currentEpisode];
-
-    episodeTitle.textContent =
-    "الموسم " +
-    currentSeason +
-    " • " +
-    ep.title;
+    episodeTitle.textContent = episode.title;
 
     episodeDescription.textContent =
-    "اختر أحد المشغلات لبدء المشاهدة.";
+    "استمتع بالمشاهدة على Stardima";
 
-    downloadBtn.href = ep.download || "#";
+    player.src({
 
-}
+        src: episode.video,
 
-// ----------------------------
-// Popup
-// ----------------------------
+        type:"video/mp4"
 
-function openPlayerPopup(){
+    });
 
-    modal.style.display = "flex";
+    player.poster(episode.poster || "");
 
-}
+    player.load();
 
-function closePlayerPopup(){
-
-    modal.style.display = "none";
+    downloadBtn.href = episode.download;
 
 }
 
-closeModal.onclick = closePlayerPopup;
+// ===============================
+// Change Season
+// ===============================
 
-modal.onclick = (e)=>{
-
-    if(e.target===modal){
-
-        closePlayerPopup();
-
-    }
-
-};
-
-document.addEventListener("keydown",(e)=>{
-
-    if(e.key==="Escape"){
-
-        closePlayerPopup();
-
-    }
-
-});
-
-// ----------------------------
-// Players
-// ----------------------------
-
-playerOne.onclick = ()=>{
-
-    const ep = seasons[currentSeason][currentEpisode];
-
-    if(ep.players.one){
-
-        window.open(ep.players.one,"_blank");
-
-    }
-
-};
-
-playerTwo.onclick = ()=>{
-
-    const ep = seasons[currentSeason][currentEpisode];
-
-    if(ep.players.two){
-
-        window.open(ep.players.two,"_blank");
-
-    }
-
-};
-
-playerThree.onclick = ()=>{
-
-    const ep = seasons[currentSeason][currentEpisode];
-
-    if(ep.players.three){
-
-        window.open(ep.players.three,"_blank");
-
-    }
-
-};
-
-// ----------------------------
-// Season Change
-// ----------------------------
-
-seasonSelect.onchange = ()=>{
+seasonSelect.addEventListener("change",()=>{
 
     currentSeason = Number(seasonSelect.value);
 
-    currentEpisode = null;
-
-    episodeTitle.textContent = "اختر حلقة";
-
-    episodeDescription.textContent =
-    "اختر حلقة من القائمة ثم اختر المشغل المناسب.";
-
-    downloadBtn.href = "#";
-
     loadEpisodes();
 
-};
+});
 
-// ----------------------------
+// ===============================
 // Start
-// ----------------------------
+// ===============================
+
+loadSeasons();
+
+seasonSelect.value = 1;
 
 loadEpisodes();
