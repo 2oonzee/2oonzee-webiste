@@ -1,96 +1,26 @@
 // =====================================
-// uxi V2
-// Gumball Episodes
+// Stardima V3 - Gumball Episodes
 // =====================================
 
+function createEpisode(number) {
+    return {
+        title: `الحلقة ${number}`,
+        description: "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+        video: "",
+        download: "",
+        poster: "banner.jpg"
+    };
+}
+
+function createSeason(totalEpisodes) {
+    return Array.from({ length: totalEpisodes }, (_, i) => createEpisode(i + 1));
+}
+
 const seasons = {
-
-1: [
-
-{
-title: "الحلقة 1",
-description: "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
-video: "",
-download: "",
-poster: ""
-},
-
-{
-title: "الحلقة 2",
-description: "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
-video: "",
-download: "",
-poster: ""
-},
-
-{
-title: "الحلقة 3",
-description: "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
-video: "",
-download: "",
-poster: ""
-}
-
-],
-
-2: [
-
-{
-title:"الحلقة 1",
-description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
-video:"",
-download:"",
-poster:""
-}
-
-],
-
-3: [
-
-{
-title:"الحلقة 1",
-description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
-video:"",
-download:"",
-poster:""
-}
-
-],
-
-4: [
-
-{
-title:"الحلقة 1",
-description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
-video:"",
-download:"",
-poster:""
-}
-
-],
-
-5: [
-
-{
-title:"الحلقة 1",
-description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
-video:"",
-download:"",
-poster:""
-}
-
-],
-
-6: [
-
-{
-title:"الحلقة 1",
-description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
-video:"",
-download:"",
-poster:""
-}
-
-]
-
+    1: createSeason(18),
+    2: createSeason(20),
+    3: createSeason(20),
+    4: createSeason(40),
+    5: createSeason(40),
+    6: createSeason(44)
 };
