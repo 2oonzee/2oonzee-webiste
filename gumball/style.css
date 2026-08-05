@@ -555,3 +555,89 @@ justify-content:center;
 }
 
 }
+
+/* ============================
+   Better Responsive Layout
+============================ */
+
+@media (max-width:1000px){
+
+    .main-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .sidebar{
+
+        order:2;
+
+        width:100%;
+
+    }
+
+    .player-section{
+
+        order:1;
+
+    }
+
+}
+
+@media (max-width:700px){
+
+    body{
+
+        padding:15px;
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        align-items:center;
+
+    }
+
+    .banner{
+
+        height:180px;
+
+    }
+
+    .banner-overlay h2{
+
+        font-size:28px;
+
+    }
+
+    .video-js{
+
+        width:100% !important;
+
+        aspect-ratio:16/9;
+
+        height:auto !important;
+
+    }
+
+    .episode-card{
+
+        padding:18px;
+
+    }
+
+    .download-btn{
+
+        width:100%;
+
+        min-width:0;
+
+        align-self:stretch;
+
+    }
+
+}
