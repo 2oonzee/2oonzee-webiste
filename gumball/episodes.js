@@ -1,3 +1,8 @@
+// ==========================================
+// Stardima Episodes Database
+// Gumball
+// ==========================================
+
 function createEpisodes(count){
 
     const episodes = [];
@@ -8,13 +13,14 @@ function createEpisodes(count){
 
             title: `الحلقة ${i}`,
 
-            players:{
-                one:"",
-                two:"",
-                three:""
-            },
+            // Replace later with your own video URL
+            video: "",
 
-            download:""
+            // Replace later with your banner/poster image
+            poster: "",
+
+            // Replace later with your download link
+            download: ""
 
         });
 
