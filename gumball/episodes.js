@@ -12,8 +12,8 @@ function createEpisode(number) {
     };
 }
 
-function createSeason(totalEpisodes) {
-    return Array.from({ length: totalEpisodes }, (_, i) => createEpisode(i + 1));
+function createSeason(total) {
+    return Array.from({ length: total }, (_, i) => createEpisode(i + 1));
 }
 
 const seasons = {
