@@ -8,7 +8,6 @@ function createEpisode(number) {
         description: "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
         video: "",
         download: "",
-        poster: "banner.jpg"
     };
 }
 
