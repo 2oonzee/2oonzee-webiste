@@ -1,5 +1,5 @@
 // ==============================
-// Stardima V2 Player
+// Stardima Player V3
 // ==============================
 
 const player = videojs("videoPlayer", {
@@ -7,7 +7,11 @@ const player = videojs("videoPlayer", {
     autoplay: false,
     preload: "auto",
     responsive: true,
-    fluid: true
+    fluid: true,
+    playbackRates: [0.5, 1, 1.25, 1.5, 2],
+    controlBar: {
+        pictureInPictureToggle: true
+    }
 });
 
 const seasonSelect = document.getElementById("seasonSelect");
@@ -18,10 +22,9 @@ const episodeDescription = document.getElementById("episodeDescription");
 const downloadBtn = document.getElementById("downloadBtn");
 
 let currentSeason = 1;
-let currentEpisode = null;
 
 // ==============================
-// Load Seasons
+// Seasons
 // ==============================
 
 function loadSeasons() {
@@ -33,7 +36,7 @@ function loadSeasons() {
         const option = document.createElement("option");
 
         option.value = season;
-        option.textContent = "الموسم " + season;
+        option.textContent = `الموسم ${season}`;
 
         seasonSelect.appendChild(option);
 
@@ -42,50 +45,60 @@ function loadSeasons() {
 }
 
 // ==============================
-// Load Episodes
+// Episodes
 // ==============================
 
 function loadEpisodes() {
 
     episodeList.innerHTML = "";
 
-    seasons[currentSeason].forEach((episode) => {
+    const list = seasons[currentSeason];
 
-        const item = document.createElement("div");
+    list.forEach((episode, index) => {
 
-        item.className = "episode";
-        item.textContent = episode.title;
+        const div = document.createElement("div");
 
-        item.onclick = () => {
+        div.className = "episode";
+        div.textContent = episode.title;
 
-            document
-                .querySelectorAll(".episode")
-                .forEach(e => e.classList.remove("active"));
+        div.onclick = () => {
 
-            item.classList.add("active");
+            document.querySelectorAll(".episode").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            div.classList.add("active");
 
             playEpisode(episode);
 
         };
 
-        episodeList.appendChild(item);
+        episodeList.appendChild(div);
 
     });
+
+    // Automatically load first episode
+    if (list.length > 0) {
+
+        episodeList.firstChild.classList.add("active");
+
+        playEpisode(list[0]);
+
+    }
 
 }
 
 // ==============================
-// Play Episode
+// Player
 // ==============================
 
 function playEpisode(episode) {
 
-    currentEpisode = episode;
-
     episodeTitle.textContent = episode.title;
 
     episodeDescription.textContent =
-        "نتمنى لكم مشاهدة ممتعة، ويمكنكم تحميل الحلقة لمشاهدتها لاحقًا.";
+        episode.description ||
+        "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.";
 
     player.pause();
 
@@ -94,16 +107,16 @@ function playEpisode(episode) {
         type: "video/mp4"
     });
 
-    if (episode.poster) {
-        player.poster(episode.poster);
-    }
+    player.poster(episode.poster || "");
+
+    player.load();
 
     downloadBtn.href = episode.download || "#";
 
 }
 
 // ==============================
-// Season Changed
+// Change Season
 // ==============================
 
 seasonSelect.addEventListener("change", () => {
@@ -115,7 +128,7 @@ seasonSelect.addEventListener("change", () => {
 });
 
 // ==============================
-// Start Website
+// Start
 // ==============================
 
 loadSeasons();
