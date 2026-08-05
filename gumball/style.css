@@ -74,27 +74,39 @@ a{
 
     align-items:center;
 
+    justify-content:center;
+
     gap:10px;
 
-    background:#1293ff;
+    padding:12px 24px;
+
+    background:linear-gradient(135deg,#2b8cff,#006cff);
 
     color:#fff;
 
-    padding:12px 20px;
-
-    border-radius:14px;
+    border-radius:999px;
 
     font-weight:700;
 
-    transition:.25s;
+    font-size:16px;
+
+    box-shadow:0 8px 18px rgba(0,120,255,.35);
+
+    transition:.25s ease;
 
 }
 
 .home-btn:hover{
 
-    background:#0d7ce0;
-
     transform:translateY(-2px);
+
+    box-shadow:0 12px 24px rgba(0,120,255,.45);
+
+}
+
+.home-btn:active{
+
+    transform:scale(.98);
 
 }
 
