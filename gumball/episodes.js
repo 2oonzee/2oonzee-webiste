@@ -1,47 +1,96 @@
-// ==========================================
-// Stardima Episodes Database
-// Gumball
-// ==========================================
-
-function createEpisodes(count){
-
-    const episodes = [];
-
-    for(let i = 1; i <= count; i++){
-
-        episodes.push({
-
-            title: `الحلقة ${i}`,
-
-            // Replace later with your own video URL
-            video: "",
-
-            // Replace later with your banner/poster image
-            poster: "",
-
-            // Replace later with your download link
-            download: ""
-
-        });
-
-    }
-
-    return episodes;
-
-}
+// =====================================
+// uxi V2
+// Gumball Episodes
+// =====================================
 
 const seasons = {
 
-    1: createEpisodes(18),
+1: [
 
-    2: createEpisodes(20),
+{
+title: "الحلقة 1",
+description: "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+video: "",
+download: "",
+poster: ""
+},
 
-    3: createEpisodes(20),
+{
+title: "الحلقة 2",
+description: "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+video: "",
+download: "",
+poster: ""
+},
 
-    4: createEpisodes(40),
+{
+title: "الحلقة 3",
+description: "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+video: "",
+download: "",
+poster: ""
+}
 
-    5: createEpisodes(40),
+],
 
-    6: createEpisodes(44)
+2: [
+
+{
+title:"الحلقة 1",
+description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+video:"",
+download:"",
+poster:""
+}
+
+],
+
+3: [
+
+{
+title:"الحلقة 1",
+description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+video:"",
+download:"",
+poster:""
+}
+
+],
+
+4: [
+
+{
+title:"الحلقة 1",
+description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+video:"",
+download:"",
+poster:""
+}
+
+],
+
+5: [
+
+{
+title:"الحلقة 1",
+description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+video:"",
+download:"",
+poster:""
+}
+
+],
+
+6: [
+
+{
+title:"الحلقة 1",
+description:"نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.",
+video:"",
+download:"",
+poster:""
+}
+
+]
 
 };
