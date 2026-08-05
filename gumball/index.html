@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>عالم غامبول المدهش | Stardima</title>
-
-<link rel="icon" href="/orglogo.png">
+<title>Stardima - غامبول</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -25,54 +23,61 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <header>
 
-<a href="../" class="home-btn">
-<i class="fa-solid fa-house"></i>
-<span>الرئيسية</span>
+<a href="../index.html" class="home-btn">
+🏠 الرئيسية
 </a>
 
 <h1>عالم غامبول المدهش</h1>
 
-<a href="#" id="downloadBtn" class="download-btn">
-<i class="fa-solid fa-download"></i>
-<span>تحميل الحلقة</span>
+<a id="downloadBtn" href="#" class="download-btn">
+⬇ تحميل الحلقة
 </a>
 
 </header>
 
 <section class="banner">
 
-<div class="banner-overlay">
+<div class="overlay">
 
 <h2>عالم غامبول المدهش</h2>
 
 <p>
-
-شاهد جميع حلقات غامبول بالدبلجة العربية
-بأفضل جودة.
-
+شاهد جميع الحلقات بالدبلجة العربية
 </p>
 
 </div>
 
 </section>
 
-<main class="container">
+<main class="layout">
 
-<section class="player-card">
+<section class="content">
+
+<div class="player-card">
+
+<video
+id="videoPlayer"
+class="video-js vjs-big-play-centered"
+controls
+preload="auto"
+width="100%"
+height="100%"
+data-setup="{}">
+
+<source src="" type="video/mp4">
+
+</video>
+
+</div>
 
 <div class="episode-info">
 
 <h2 id="episodeTitle">
-
 اختر حلقة
-
 </h2>
 
 <p id="episodeDescription">
-
-اختر حلقة من القائمة
-ثم اختر المشغل المناسب.
-
+اختر حلقة من القائمة لبدء المشاهدة.
 </p>
 
 </div>
@@ -81,92 +86,24 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <aside class="sidebar">
 
-<div class="box">
+<h3>المواسم</h3>
 
-<h3>
+<select id="seasonSelect"></select>
 
-المواسم
+<h3>الحلقات</h3>
 
-</h3>
-
-<select id="seasonSelect">
-
-</select>
-
-</div>
-
-<div class="box">
-
-<h3>
-
-الحلقات
-
-</h3>
-
-<div id="episodeList">
-
-</div>
-
-</div>
+<div id="episodeList"></div>
 
 </aside>
 
 </main>
 
-<!-- PLAYER POPUP -->
-
-<div id="playerModal" class="modal">
-
-<div class="modal-content">
-
-<button id="closeModal">
-
-<i class="fa-solid fa-xmark"></i>
-
-</button>
-
-<h2>
-
-اختر المشغل
-
-</h2>
-
-<button id="playerOne" class="player-button recommended">
-
-<i class="fa-solid fa-play"></i>
-
-المشغل الأول
-
-<span>
-
-موصى به
-
-</span>
-
-</button>
-
-<button id="playerTwo" class="player-button">
-
-<i class="fa-solid fa-play"></i>
-
-المشغل الثاني
-
-</button>
-
-<button id="playerThree" class="player-button">
-
-<i class="fa-solid fa-play"></i>
-
-المشغل الثالث
-
-</button>
-
-</div>
-
-</div>
+<script src="https://vjs.zencdn.net/8.23.4/video.min.js"></script>
 
 <script src="episodes.js"></script>
+
 <script src="player.js"></script>
 
 </body>
+
 </html>
