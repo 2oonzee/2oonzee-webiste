@@ -2,211 +2,116 @@
 <html lang="ar" dir="rtl">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stardima | عالم غامبول المدهش</title>
 
-<title>Stardima - غامبول</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet">
 
-<link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
-<script src="https://vjs.zencdn.net/8.23.4/video.min.js"></script>
-<script src="episodes.js"></script>
-<script src="player.js"></script>
-
-</head>
-
-<body>
-
-<header>
-
-<a href="../index.html" class="home-btn">
-🏠 الرئيسية
-</a>
-
-<h1>عالم غامبول المدهش</h1>
-
-</header>
-
-<section class="banner">
-
-<div class="overlay">
-
-<h2>عالم غامبول المدهش</h2>
-
-<p>
-شاهد جميع الحلقات بالدبلجة العربية
-</p>
-
-</div>
-
-</section>
-
-<main class="layout">
-
-<section class="content">
-
-<div class="player-card">
-
-<video
-id="videoPlayer"
-class="video-js vjs-big-play-centered"
-controls
-preload="auto"
-width="100%"
-height="100%"
-data-setup="{}"><!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Stardima | عالم غامبول المدهش</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet">
-
-<link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="topbar">
 
-<a href="../index.html" class="home-btn">
+    <a href="../index.html" class="home-btn">
+        <span>🏠</span>
+        <span>الرئيسية</span>
+    </a>
 
-<span>🏠</span>
-
-<span>الرئيسية</span>
-
-</a>
-
-<h1 class="logo">
-
-Stardima
-
-</h1>
+    <h1 class="logo">
+        عالم غامبول المدهش
+    </h1>
 
 </header>
 
 <section class="banner">
 
-<div class="banner-overlay">
+    <div class="banner-overlay">
 
-<h2>عالم غامبول المدهش</h2>
+        <h2>عالم غامبول المدهش</h2>
 
-<p>
+        <p>
+            شاهد جميع الحلقات بالدبلجة العربية
+        </p>
 
-جميع الحلقات بالدبلجة العربية
-
-</p>
-
-</div>
+    </div>
 
 </section>
 
 <main class="main-layout">
 
-<section class="player-section">
+    <section class="player-section">
 
-<div class="video-box">
+        <div class="video-box">
 
-<video
-id="videoPlayer"
-class="video-js vjs-big-play-centered"
-controls
-preload="auto"
-playsinline
-data-setup="{}">
+            <video
+                id="videoPlayer"
+                class="video-js vjs-big-play-centered"
+                controls
+                preload="auto"
+                playsinline
+                data-setup="{}">
 
-<source src="" type="video/mp4">
+                <source src="" type="video/mp4">
 
-</video>
+            </video>
 
-</div>
+        </div>
 
-<div class="episode-card">
+        <div class="episode-card">
 
-<h2 id="episodeTitle">
+            <h2 id="episodeTitle">
+                اختر حلقة
+            </h2>
 
-اختر حلقة
+            <p id="episodeDescription">
+                اختر حلقة من القائمة لبدء المشاهدة.
+                نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.
+            </p>
 
-</h2>
+            <a id="downloadBtn"
+               class="download-btn"
+               href="#">
+                ⬇ تحميل الحلقة
+            </a>
 
-<p id="episodeDescription">
+        </div>
 
-اختر حلقة من القائمة لبدء المشاهدة.
-نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.
+    </section>
 
-</p>
+    <aside class="sidebar">
 
-<a
-id="downloadBtn"
-class="download-btn"
-href="#">
+        <div class="card">
 
-⬇ تحميل الحلقة
+            <h3>المواسم</h3>
 
-</a>
+            <select id="seasonSelect"></select>
 
-</div>
+        </div>
 
-</section>
+        <div class="card">
 
-<aside class="sidebar">
+            <h3>الحلقات</h3>
 
-<div class="card">
+            <div id="episodeList"></div>
 
-<h3>
+        </div>
 
-المواسم
-
-</h3>
-
-<select id="seasonSelect">
-
-</select>
-
-</div>
-
-<div class="card">
-
-<h3>
-
-الحلقات
-
-</h3>
-
-<div id="episodeList">
-
-</div>
-
-</div>
-
-</aside>
+    </aside>
 
 </main>
 
 <script src="https://vjs.zencdn.net/8.23.4/video.min.js"></script>
-
 <script src="episodes.js"></script>
-
 <script src="player.js"></script>
 
 </body>
-
 </html>
