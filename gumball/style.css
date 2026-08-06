@@ -425,9 +425,13 @@ width:100%;
 
     background:#102233;
 
+    border:2px solid #18364c;
+
     border-radius:20px;
 
     padding:20px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
 
 }
 
@@ -445,21 +449,35 @@ width:100%;
 
     width:100%;
 
-    padding:14px;
+    padding:15px;
 
     border-radius:14px;
 
-    border:2px solid #234965;
-
     background:#18364c;
+
+    border:2px solid #27557b;
 
     color:#fff;
 
     font-size:16px;
 
-    font-family:"Cairo",sans-serif;
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+#seasonSelect:hover{
+
+    border-color:#1293ff;
+
+}
+
+#seasonSelect:focus{
 
     outline:none;
+
+    border-color:#1293ff;
 
 }
 
@@ -474,6 +492,46 @@ width:100%;
     background:#18364c;
 
     color:#fff;
+
+}
+
+.episode-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.episode-icon{
+
+    font-size:22px;
+
+}
+
+.episode-title{
+
+    font-weight:700;
+
+    font-size:16px;
+
+}
+
+.episode-arrow{
+
+    font-size:20px;
+
+    opacity:.8;
+
+    transition:.25s;
+
+}
+
+.episode:hover .episode-arrow{
+
+    transform:translateX(-5px);
 
 }
 
@@ -497,11 +555,21 @@ width:100%;
 
 .episode{
 
-    background:#18364c;
+    display:flex;
 
-    padding:15px;
+    justify-content:space-between;
 
-    border-radius:14px;
+    align-items:center;
+
+    padding:16px 18px;
+
+    margin-bottom:12px;
+
+    background:#102233;
+
+    border:2px solid #18364c;
+
+    border-radius:16px;
 
     cursor:pointer;
 
@@ -511,9 +579,21 @@ width:100%;
 
 .episode:hover{
 
-    background:#24597c;
+    background:#163149;
 
-    transform:translateY(-2px);
+    border-color:#1293ff;
+
+    transform:translateX(-4px);
+
+}
+
+.episode.active{
+
+    background:linear-gradient(135deg,#1293ff,#006cff);
+
+    border-color:#5dbbff;
+
+    box-shadow:0 0 18px rgba(18,147,255,.35);
 
 }
 
