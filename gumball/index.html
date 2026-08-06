@@ -12,8 +12,8 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -69,17 +69,15 @@
 
         <div class="video-box">
 
-            <video
-                id="videoPlayer"
-                class="video-js vjs-big-play-centered"
-                controls
-                preload="auto"
-                playsinline
-                data-setup="{}">
+<video
+    id="player"
+    playsinline
+    controls
+    crossorigin="anonymous">
 
-                <source src="" type="video/mp4">
+              <source src="" type="video/mp4">
 
-            </video>
+           </video>
 
         </div>
 
@@ -125,8 +123,8 @@
     </aside>
 
 </main>
-
-<script src="https://vjs.zencdn.net/8.23.4/video.min.js"></script>
+    
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 <script src="episodes.js"></script>
 <script src="player.js"></script>
 
