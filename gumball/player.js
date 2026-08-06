@@ -1,18 +1,30 @@
-// ==============================
-// Stardima Player V3
-// ==============================
+// =====================================
+// Stardima Player V3 (Plyr)
+// =====================================
 
-const player = videojs("videoPlayer", {
-    controls: true,
-    autoplay: false,
-    preload: "auto",
-    responsive: true,
-    fluid: true,
-    playbackRates: [0.5, 1, 1.25, 1.5, 2],
-    controlBar: {
-        pictureInPictureToggle: true
+const player = new Plyr('#player', {
+    controls: [
+        'play-large',
+        'play',
+        'progress',
+        'current-time',
+        'duration',
+        'mute',
+        'volume',
+        'settings',
+        'pip',
+        'fullscreen'
+    ],
+
+    settings: ['speed'],
+
+    speed: {
+        selected: 1,
+        options: [0.5, 0.75, 1, 1.25, 1.5, 2]
     }
 });
+
+const video = document.getElementById("player");
 
 const seasonSelect = document.getElementById("seasonSelect");
 const episodeList = document.getElementById("episodeList");
@@ -54,12 +66,20 @@ function loadEpisodes() {
 
     const list = seasons[currentSeason];
 
-    list.forEach((episode, index) => {
+    list.forEach((episode) => {
 
         const div = document.createElement("div");
 
         div.className = "episode";
-        div.textContent = episode.title;
+
+        div.innerHTML = `
+            <div class="episode-left">
+                <span class="episode-icon">🎬</span>
+                <span class="episode-title">${episode.title}</span>
+            </div>
+
+            <span class="episode-arrow">▶</span>
+        `;
 
         div.onclick = () => {
 
@@ -77,10 +97,9 @@ function loadEpisodes() {
 
     });
 
-    // Automatically load first episode
-    if (list.length > 0) {
+    if (list.length) {
 
-        episodeList.firstChild.classList.add("active");
+        episodeList.firstElementChild.classList.add("active");
 
         playEpisode(list[0]);
 
@@ -100,23 +119,18 @@ function playEpisode(episode) {
         episode.description ||
         "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.";
 
-    player.pause();
+    video.src = episode.video || "";
 
-    player.src({
-        src: episode.video,
-        type: "video/mp4"
-    });
+    video.poster = episode.poster || "";
 
-    player.poster(episode.poster || "");
-
-    player.load();
+    video.load();
 
     downloadBtn.href = episode.download || "#";
 
 }
 
 // ==============================
-// Change Season
+// Season Changed
 // ==============================
 
 seasonSelect.addEventListener("change", () => {
