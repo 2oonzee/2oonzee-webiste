@@ -210,23 +210,106 @@ a{
 
 .video-box{
 
-    background:#102233;
+    background:#0d1c2b;
 
     border-radius:22px;
 
     overflow:hidden;
 
-    padding:10px;
+    padding:0;
+
+    border:2px solid #18364c;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
 
 }
 
-.video-js{
+.plyr{
 
-    width:100% !important;
+width:100%;
 
-    height:550px !important;
+}
 
-    border-radius:18px;
+/* ============================
+   Plyr Player
+============================ */
+
+.plyr{
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.plyr video{
+
+    width:100%;
+
+    display:block;
+
+    aspect-ratio:16/9;
+
+    background:#000;
+
+}
+
+/* Controls */
+
+.plyr--video{
+
+    --plyr-color-main:#1293ff;
+
+    --plyr-video-control-background:rgba(10,20,35,.90);
+
+    --plyr-video-controls-background:linear-gradient(
+        transparent,
+        rgba(5,12,20,.92)
+    );
+
+    --plyr-menu-background:#102233;
+
+    --plyr-menu-color:#ffffff;
+
+    --plyr-tooltip-background:#1293ff;
+
+    --plyr-tooltip-color:#fff;
+
+}
+
+/* Big play button */
+
+.plyr__control--overlaid{
+
+    background:#1293ff !important;
+
+    border-radius:50% !important;
+
+    padding:22px !important;
+
+    transition:.25s;
+
+}
+
+.plyr__control--overlaid:hover{
+
+    background:#0d7ce0 !important;
+
+    transform:scale(1.08);
+
+}
+
+/* Bottom controls */
+
+.plyr__controls{
+
+    padding:14px !important;
+
+}
+
+.plyr__progress__buffer{
+
+    color:#34536f !important;
 
 }
 
