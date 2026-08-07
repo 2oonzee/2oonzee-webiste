@@ -1,81 +1,266 @@
 // =====================================
-// Stardima V3 - Episodes
+// Stardima Player - Video.js
 // =====================================
 
-// Create one episode
-function episode(number, video = "", download = "", description = "") {
-    return {
-        title: `الحلقة ${number}`,
+const player = videojs("videoPlayer", {
+    controls: true,
+    autoplay: false,
+    preload: "metadata",
+    responsive: true,
+    fluid: true,
+    playbackRates: [0.5, 0.75, 1, 1.25, 1.5, 2]
+});
 
-        description:
-            description ||
-            "استمتع بمشاهدة الحلقة، ويمكنك تحميلها للمشاهدة لاحقًا.",
+const seasonSelect = document.getElementById("seasonSelect");
+const episodeList = document.getElementById("episodeList");
 
-        // Video URL
-        video: video,
+const episodeTitle = document.getElementById("episodeTitle");
+const episodeDescription = document.getElementById("episodeDescription");
 
-        // Download URL
-        download: download,
+const downloadBtn = document.getElementById("downloadEpisode");
+const prevBtn = document.getElementById("prevEpisode");
+const nextBtn = document.getElementById("nextEpisode");
 
-        // Optional thumbnail
-        poster: ""
-    };
-}
+let currentSeason = 1;
+let currentEpisode = 0;
 
-// Create a season
-function createSeason(totalEpisodes) {
-    const list = [];
-
-    for (let i = 1; i <= totalEpisodes; i++) {
-        list.push(episode(i));
-    }
-
-    return list;
-}
 
 // =====================================
 // Seasons
 // =====================================
 
-const seasons = {
-    1: createSeason(36),
-    2: createSeason(40),
-    3: createSeason(40),
-    4: createSeason(40),
-    5: createSeason(40),
-    6: createSeason(44)
-};
+function loadSeasons() {
+
+    seasonSelect.innerHTML = "";
+
+    Object.keys(seasons).forEach((season) => {
+
+        const option = document.createElement("option");
+
+        option.value = season;
+        option.textContent = `الموسم ${season}`;
+
+        seasonSelect.appendChild(option);
+
+    });
+
+}
+
 
 // =====================================
-// Add your episode links here
+// Episodes
 // =====================================
 
-// Season 1
-seasons[1][0].video = "https://screenapp.io/app/v/0KwfXr_IIl";
-seasons[1][0].download = "";
+function loadEpisodes() {
 
-seasons[1][1].video = "https://screenapp.io/app/v/0KwfXr_IIl";
-seasons[1][1].download = "";
+    episodeList.innerHTML = "";
 
-seasons[1][2].video = "https://screenapp.io/app/v/0KwfXr_IIl";
-seasons[1][2].download = "";
+    const list = seasons[currentSeason];
 
-// Season 2
-seasons[2][0].video = "";
-seasons[2][0].download = "";
+    if (!list || list.length === 0) {
+        return;
+    }
 
-// Season 3
-// seasons[3][0].video = "";
-// seasons[3][0].download = "";
+    list.forEach((episode, index) => {
 
-// Season 4
-// seasons[4][0].video = "";
-// seasons[4][0].download = "";
+        const div = document.createElement("div");
 
-// Season 5
-// seasons[5][0].video = "";
-// seasons[5][0].download = "";
+        div.className = "episode";
 
-// Season 6
-// seasons[6][0].video = "";
-// seasons[6][0].download = "";
+        if (index === currentEpisode) {
+            div.classList.add("active");
+        }
+
+        div.innerHTML = `
+            <div class="episode-left">
+                <span class="episode-icon">🎬</span>
+                <span class="episode-title">${episode.title}</span>
+            </div>
+
+            <span class="episode-arrow">▶</span>
+        `;
+
+        div.addEventListener("click", () => {
+
+            currentEpisode = index;
+
+            loadEpisodes();
+            playEpisode(episode);
+
+        });
+
+        episodeList.appendChild(div);
+
+    });
+
+}
+
+
+// =====================================
+// Play Episode
+// =====================================
+
+function playEpisode(episode) {
+
+    if (!episode) {
+        return;
+    }
+
+    episodeTitle.textContent =
+        `الموسم ${currentSeason} • ${episode.title}`;
+
+    episodeDescription.textContent =
+        episode.description ||
+        "نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.";
+
+
+    // -----------------------------
+    // Video source
+    // -----------------------------
+
+    if (episode.video && episode.video.trim() !== "") {
+
+        player.src({
+            src: episode.video,
+            type: "video/mp4"
+        });
+
+        if (episode.poster) {
+            player.poster(episode.poster);
+        }
+
+        player.load();
+
+    } else {
+
+        player.pause();
+
+        player.removeAttribute("src");
+
+        episodeDescription.textContent =
+            "لم تتم إضافة رابط الفيديو لهذه الحلقة بعد.";
+
+    }
+
+
+    // -----------------------------
+    // Download
+    // -----------------------------
+
+    if (episode.download && episode.download.trim() !== "") {
+
+        downloadBtn.href = episode.download;
+        downloadBtn.style.pointerEvents = "auto";
+        downloadBtn.style.opacity = "1";
+
+    } else {
+
+        downloadBtn.href = "#";
+        downloadBtn.style.pointerEvents = "none";
+        downloadBtn.style.opacity = "0.5";
+
+    }
+
+    updateNavigation();
+
+}
+
+
+// =====================================
+// Navigation
+// =====================================
+
+function updateNavigation() {
+
+    const list = seasons[currentSeason];
+
+    if (!list) {
+        return;
+    }
+
+    prevBtn.disabled = currentEpisode <= 0;
+
+    nextBtn.disabled =
+        currentEpisode >= list.length - 1;
+
+}
+
+
+// =====================================
+// Previous
+// =====================================
+
+prevBtn.addEventListener("click", () => {
+
+    if (currentEpisode <= 0) {
+        return;
+    }
+
+    currentEpisode--;
+
+    loadEpisodes();
+
+    playEpisode(
+        seasons[currentSeason][currentEpisode]
+    );
+
+});
+
+
+// =====================================
+// Next
+// =====================================
+
+nextBtn.addEventListener("click", () => {
+
+    const list = seasons[currentSeason];
+
+    if (!list) {
+        return;
+    }
+
+    if (currentEpisode >= list.length - 1) {
+        return;
+    }
+
+    currentEpisode++;
+
+    loadEpisodes();
+
+    playEpisode(list[currentEpisode]);
+
+});
+
+
+// =====================================
+// Season change
+// =====================================
+
+seasonSelect.addEventListener("change", () => {
+
+    currentSeason = Number(seasonSelect.value);
+
+    currentEpisode = 0;
+
+    loadEpisodes();
+
+    playEpisode(
+        seasons[currentSeason][0]
+    );
+
+});
+
+
+// =====================================
+// Start
+// =====================================
+
+loadSeasons();
+
+seasonSelect.value = String(currentSeason);
+
+loadEpisodes();
+
+playEpisode(
+    seasons[currentSeason][0]
+);
