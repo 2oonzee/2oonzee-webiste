@@ -1,132 +1,132 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07131d">
+<title>Stardima | عالم غامبول المدهش</title>
+<link rel="icon" href="/orglogo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    <title>Stardima | عالم غامبول المدهش</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
-    
-    <link rel="stylesheet" href="style.css">
+<!-- Video.js only -->
+<link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div id="loader">
+    <div class="loader-circle"></div>
+    <h2>Loading...</h2>
+</div>
+
+<div id="main">
+
 <header class="topbar">
-
-<a href="../index.html" class="home-btn">
-
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="22"
-         height="22"
-         viewBox="0 0 24 24"
-         fill="none"
-         stroke="currentColor"
-         stroke-width="2.5"
-         stroke-linecap="round"
-         stroke-linejoin="round">
-
-        <path d="M3 10.5L12 3l9 7.5"></path>
-        <path d="M5 9.5V21h14V9.5"></path>
-        <path d="M9 21v-6h6v6"></path>
-
-    </svg>
-
-    <span>الرئيسية</span>
-
-</a>
-
-    <h1 class="logo">
-        عالم غامبول المدهش
-    </h1>
-
+    <a href="../" class="home-btn">
+        <span class="home-icon" aria-hidden="true">⌂</span>
+        <span>الرئيسية</span>
+    </a>
+    <h1 class="logo">عالم غامبول المدهش</h1>
 </header>
 
 <section class="banner">
-
     <div class="banner-overlay">
-
-        <h2>عالم غامبول المدهش</h2>
-
-        <p>
-            شاهد جميع الحلقات بالدبلجة العربية
-        </p>
-
+        <h2>شاهد جميع حلقات عالم غامبول المدهش</h2>
+        <p>جميع الحلقات بالدبلجة العربية.</p>
     </div>
-
 </section>
 
 <main class="main-layout">
 
-    <section class="player-section">
+<section class="player-section">
+    <div class="player-card">
 
-        <div class="video-box">
+        <video
+            id="videoPlayer"
+            class="video-js vjs-big-play-centered"
+            controls
+            preload="metadata"
+            playsinline
+            width="100%"
+            height="100%"
+            data-setup="{}">
 
-<video
-    id="player"
-    playsinline
-    controls
-    crossorigin="anonymous">
+            <source id="videoSource" src="" type="video/mp4">
 
-              <source src="" type="video/mp4">
-
-           </video>
-
-        </div>
-
-        <div class="episode-card">
-
-            <h2 id="episodeTitle">
-                اختر حلقة
-            </h2>
-
-            <p id="episodeDescription">
-                اختر حلقة من القائمة لبدء المشاهدة.
-                نتمنى لكم مشاهدة ممتعة ويمكنكم تحميل الحلقة في أي وقت.
+            <p class="vjs-no-js">
+                لتشغيل الفيديو، يرجى تفعيل JavaScript في متصفحك.
             </p>
+        </video>
 
-            <a id="downloadBtn"
+        <div class="player-actions">
+
+            <button type="button" id="prevEpisode">
+                <span aria-hidden="true">‹</span>
+                <span>الحلقة السابقة</span>
+            </button>
+
+            <a id="downloadEpisode"
                class="download-btn"
-               href="#">
-                ⬇ تحميل الحلقة
+               href="#"
+               target="_blank"
+               rel="noopener">
+                <span aria-hidden="true">↓</span>
+                <span>تحميل الحلقة</span>
             </a>
 
-        </div>
-
-    </section>
-
-    <aside class="sidebar">
-
-        <div class="card">
-
-            <h3>المواسم</h3>
-
-            <select id="seasonSelect"></select>
+            <button type="button" id="nextEpisode">
+                <span>الحلقة التالية</span>
+                <span aria-hidden="true">›</span>
+            </button>
 
         </div>
 
-        <div class="card">
-
-            <h3>الحلقات</h3>
-
-            <div id="episodeList"></div>
-
+        <div class="now-playing">
+            <h3>يعرض الآن</h3>
+            <h2 id="episodeTitle">اختر حلقة</h2>
+            <p id="episodeDescription">
+                اختر حلقة من القائمة لبدء المشاهدة.
+                نتمنى لكم مشاهدة ممتعة.
+            </p>
         </div>
 
-    </aside>
+    </div>
+</section>
+
+<aside class="sidebar">
+
+    <div class="box">
+        <h3>المواسم</h3>
+        <select id="seasonSelect" aria-label="اختيار الموسم"></select>
+    </div>
+
+    <div class="box">
+        <h3>الحلقات</h3>
+        <div id="episodeList"></div>
+    </div>
+
+</aside>
 
 </main>
-    
-<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+</div>
+
+<script src="https://vjs.zencdn.net/8.23.4/video.min.js"></script>
 <script src="episodes.js"></script>
 <script src="player.js"></script>
+
+<script>
+window.addEventListener("load", function () {
+    window.setTimeout(function () {
+        const loader = document.getElementById("loader");
+        const main = document.getElementById("main");
+        if (loader) loader.style.display = "none";
+        if (main) main.style.display = "block";
+    }, 500);
+});
+</script>
 
 </body>
 </html>
