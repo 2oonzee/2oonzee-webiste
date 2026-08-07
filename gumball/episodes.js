@@ -54,7 +54,7 @@ const seasons = {
 seasons[1][0].video = "";
 seasons[1][0].download = "";
 
-seasons[1][1].video = "blob:https://playfulone.web.app/69213db3-f4b0-4e62-ad62-13a4b9620334";
+seasons[1][1].video = "https://screenapp.io/app/v/0KwfXr_IIl";
 seasons[1][1].download = "";
 
 seasons[1][2].video = "";
