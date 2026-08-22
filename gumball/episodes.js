@@ -105,7 +105,7 @@ seasons[1][0].embed =
 
 // Episode 2
 
-seasons[1][1].video = "";
+seasons[1][1].video = "https://jumpshare.com/embed/75BKBXMwzQOA54idFW7k";
 
 seasons[1][1].download = "";
 
