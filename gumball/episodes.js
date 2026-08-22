@@ -68,11 +68,11 @@ const seasons = {
 
 // Season 1
 
-seasons[1][0].video = "https://jumpshare.com/s/75BKBXMwzQOA54idFW7k";
-seasons[1][0].download = "";
+seasons[1][0].video = "https://jumpshare.com/s/75BKBXMwzQOA54idFW7k+";
+seasons[1][0].download = "https://cdn.jumpshare.com/download/V1gXm4kR0oE9Ro_upROoCemJCghJvyzQhI3iddji2obf27jniSnZGtORKoiS3bS1_A7eNo0eZNPK8uS429Z7dqb5RW6_a-qVqU5Z46JHJVg"
 
-seasons[1][1].video = "https://jumpshare.com/s/75BKBXMwzQOA54idFW7k";
-seasons[1][1].download = "";
+seasons[1][1].video = "https://jumpshare.com/s/75BKBXMwzQOA54idFW7k+";
+seasons[1][1].download = "https://cdn.jumpshare.com/download/V1gXm4kR0oE9Ro_upROoCemJCghJvyzQhI3iddji2obf27jniSnZGtORKoiS3bS1_A7eNo0eZNPK8uS429Z7dqb5RW6_a-qVqU5Z46JHJVg"
 
 seasons[1][2].video = "";
 seasons[1][2].download = "";
