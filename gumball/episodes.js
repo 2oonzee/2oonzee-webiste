@@ -105,7 +105,7 @@ seasons[1][0].embed =
 
 // Episode 2
 
-seasons[1][1].video = "https://jumpshare.com/embed/75BKBXMwzQOA54idFW7k";
+seasons[1][1].video = "https://cdn.jumpshare.com/preview/RScwzSoH-fPEtif1rn71ayUuvkGXvxAtbw21eBjE0F_OgkqJHUMzyf_eZZFinPdoleR1cwr8z5se1FtgkgdReBb42fSKsKOzEP-hIh8hyqqnhp7OvK0MbPkrieFvRv3xrEIdavLgHMfOIMR4xBCZJW6yjbN-I2pg_cnoHs_AmgI.mp4";
 
 seasons[1][1].download = "";
 
