@@ -1,152 +1,1253 @@
-<!doctype html>
-<html>
-    <html lang="ar" dir="rtl">
-        <head>
-            <meta charset="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>كرتون بالعربي</title>
-            <link rel="icon" type="image/png" href="/channels4_profile.jpg">
-            <style>
-                * {
-                    margin: 0;
-                    padding: 0;
-                    box-sizing: border-box;
-                    font-family: "Cairo", sans-serif;
-                }
-                body {
-                    background: #050505;
-                    color: white;
-                    overflow: hidden;
-                } /* Loading Screen */
-                #loader {
-                    position: fixed;
-                    width: 100%;
-                    height: 100%;
-                    background: #000;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
-                    z-index: 9999;
-                }
-                .spinner {
-                    width: 90px;
-                    height: 90px;
-                    border: 7px solid #222;
-                    border-top: 7px solid cyan;
-                    border-radius: 50%;
-                    animation: spin 1s linear infinite;
-                    margin-bottom: 25px;
-                }
-                @keyframes spin {
-                    100% {
-                        transform: rotate(360deg);
-                    }
-                }
-                #loader h2 {
-                    font-size: 30px;
-                    color: white;
-                    letter-spacing: 2px;
-                } /* Main */
-                #main {
-                    display: none;
-                    padding: 40px;
-                    min-height: 100vh;
-                    background: linear-gradient(180deg, #050505, #101010);
-                }
-                header {
-                    text-align: center;
-                    margin-bottom: 50px;
-                }
-                header h1 {
-                    font-size: 45px;
-                    color: cyan;
-                    text-shadow: 0 0 20px cyan;
-                }
-                header p {
-                    color: #aaa;
-                    margin-top: 10px;
-                    font-size: 18px;
-                }
-                .cards {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                    gap: 35px;
-                }
-                .card {
-                    background: #111;
-                    border-radius: 18px;
-                    overflow: hidden;
-                    cursor: pointer;
-                    transition: 0.35s;
-                    border: 2px solid #222;
-                    box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
-                }
-                .card:hover {
-                    transform: translateY(-10px) scale(1.03);
-                    border-color: cyan;
-                    box-shadow: 0 0 35px cyan;
-                }
-                .card img {
-                    width: 100%;
-                    height: 360px;
-                    object-fit: cover;
-                }
-                .card h2 {
-                    padding: 20px;
-                    text-align: center;
-                    font-size: 28px;
-                }
-                footer {
-                    text-align: center;
-                    margin-top: 60px;
-                    color: #666;
-                }
-            </style>
-        </head>
-        <body>
-            <div id="loader">
-                <div class="spinner"></div>
-                <h2>Loading...</h2>
-            </div>
-            <div id="main">
-                <header>
-                    <h1>🎬 كرتون بالعربي</h1>
-                    <p>اختر الكرتون الذي تريد مشاهدته</p>
-                </header>
-                <div class="cards">
-                    <div class="card" onclick="location.href='gumball/'">
-                        <img
-                            src="https://i.pinimg.com/originals/23/c5/d9/23c5d9dd3daf24f4670d8d6c52e36960.png"
-                            alt=""
-                        />
-                        <h2>عالم غامبول المدهش</h2>
-                    </div>
-                    <div class="card" onclick="location.href='clarence/'">
-                        <img
-                            src="https://tse3.mm.bing.net/th/id/OIP.khEu7iDDc6WUSgf5IqvlLwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
-                            alt=""
-                        />
-                        <h2>كلارنس</h2>
-                    </div>
-                    <div class="card" onclick="location.href='regularshow/'">
-                        <img
-                            src="https://wallpapercave.com/wp/wp9772929.jpg"
-                            alt=""
-                        />
-                        <h2>العرض العادي</h2>
-                    </div>
-                </div>
-                <footer><p>©2oonzee - YouTube</p></footer>
-            </div>
-            <script>
-                setTimeout(function () {
-                    document.getElementById("loader").style.display = "none";
-                    document.getElementById("main").style.display = "block";
-                    document.body.style.overflow = "auto";
-                }, 2500);
-            </script>
-        </body>
-    </html>
-    "
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CN Arabia | عالم الكرتون</title>
+
+  <link rel="icon" href="orglogo.png">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Cairo", sans-serif;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      /*
+        Background changes every 6 seconds.
+      */
+
+      background:
+        radial-gradient(
+          circle at 10% 20%,
+          rgba(0, 210, 255, .45),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 90% 80%,
+          rgba(30, 70, 255, .35),
+          transparent 32%
+        ),
+        linear-gradient(
+          120deg,
+          #061522,
+          #102b45,
+          #07121e
+        );
+
+      background-size: 180% 180%;
+
+      animation:
+        colorShift 6s ease-in-out infinite;
+    }
+
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================
+       BACKGROUND COLOR ANIMATION
+       6 SECOND CYCLE
+    ========================= */
+
+    @keyframes colorShift {
+
+      0% {
+        background:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 210, 255, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(30, 70, 255, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #061522,
+            #102b45,
+            #07121e
+          );
+
+        background-position:
+          0% 0%,
+          100% 100%,
+          0% 50%;
+      }
+
+
+      25% {
+        background:
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(255, 0, 180, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 15% 85%,
+            rgba(120, 0, 255, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #170621,
+            #32103f,
+            #0c1025
+          );
+
+        background-position:
+          100% 0%,
+          0% 100%,
+          100% 50%;
+      }
+
+
+      50% {
+        background:
+          radial-gradient(
+            circle at 15% 75%,
+            rgba(0, 255, 170, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 85% 25%,
+            rgba(0, 180, 255, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #061f20,
+            #063c4c,
+            #06151d
+          );
+
+        background-position:
+          0% 100%,
+          100% 0%,
+          50% 100%;
+      }
+
+
+      75% {
+        background:
+          radial-gradient(
+            circle at 80% 75%,
+            rgba(255, 120, 0, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 0, 80, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #241007,
+            #42200c,
+            #10151e
+          );
+
+        background-position:
+          100% 100%,
+          0% 0%,
+          0% 50%;
+      }
+
+
+      100% {
+        background:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 210, 255, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(30, 70, 255, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #061522,
+            #102b45,
+            #07121e
+          );
+
+        background-position:
+          0% 0%,
+          100% 100%,
+          0% 50%;
+      }
+
+    }
+
+
+    /* =========================
+       MOVING GLOW EFFECTS
+    ========================= */
+
+    body::before,
+    body::after {
+      content: "";
+
+      position: fixed;
+
+      width: 550px;
+      height: 550px;
+
+      border-radius: 50%;
+
+      filter: blur(110px);
+
+      pointer-events: none;
+
+      z-index: -1;
+
+      opacity: .22;
+    }
+
+
+    /*
+      Blue glow
+    */
+
+    body::before {
+      background: #00c8ff;
+
+      top: -250px;
+      left: -200px;
+
+      animation:
+        moveGlowOne 12s ease-in-out infinite alternate;
+    }
+
+
+    /*
+      Pink glow
+    */
+
+    body::after {
+      background: #ff00cc;
+
+      bottom: -250px;
+      right: -200px;
+
+      animation:
+        moveGlowTwo 15s ease-in-out infinite alternate;
+    }
+
+
+    @keyframes moveGlowOne {
+
+      0% {
+        transform:
+          translate(0, 0)
+          scale(1);
+      }
+
+      25% {
+        transform:
+          translate(30vw, 10vh)
+          scale(1.15);
+      }
+
+      50% {
+        transform:
+          translate(55vw, 40vh)
+          scale(.9);
+      }
+
+      75% {
+        transform:
+          translate(20vw, 65vh)
+          scale(1.25);
+      }
+
+      100% {
+        transform:
+          translate(70vw, 20vh)
+          scale(1);
+      }
+
+    }
+
+
+    @keyframes moveGlowTwo {
+
+      0% {
+        transform:
+          translate(0, 0)
+          scale(1);
+      }
+
+      25% {
+        transform:
+          translate(-30vw, -15vh)
+          scale(1.2);
+      }
+
+      50% {
+        transform:
+          translate(-55vw, -40vh)
+          scale(.9);
+      }
+
+      75% {
+        transform:
+          translate(-15vw, -65vh)
+          scale(1.3);
+      }
+
+      100% {
+        transform:
+          translate(-70vw, -20vh)
+          scale(1);
+      }
+
+    }
+
+
+    /* =========================
+       TOP BAR
+    ========================= */
+
+    .topbar {
+
+      width: 100%;
+
+      background:
+        linear-gradient(
+          rgba(15, 50, 75, .96),
+          rgba(5, 20, 32, .96)
+        );
+
+      border-bottom: 4px solid #20caff;
+
+      box-shadow:
+        0 5px 25px rgba(0, 0, 0, .55);
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+      backdrop-filter: blur(10px);
+    }
+
+
+    .topbar-inner {
+
+      max-width: 1250px;
+
+      margin: auto;
+
+      min-height: 75px;
+
+      padding: 10px 20px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+
+    /* =========================
+       CN ARABIA LOGO
+    ========================= */
+
+    .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      font-size: 30px;
+
+      font-weight: 900;
+
+      color: white;
+
+      text-shadow:
+        2px 3px 0 #006f9c,
+        0 4px 12px rgba(0, 0, 0, .7);
+
+      transition: .2s;
+    }
+
+
+    .logo:hover {
+      transform: scale(1.04);
+    }
+
+
+    .logo-badge {
+
+      width: 52px;
+      height: 52px;
+
+      border-radius: 10px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        linear-gradient(
+          145deg,
+          #222,
+          #050505
+        );
+
+      border: 3px solid white;
+
+      box-shadow:
+        0 3px 12px rgba(0, 0, 0, .6),
+        inset 0 2px rgba(255, 255, 255, .25);
+
+      font-family: Arial, sans-serif;
+
+      font-size: 18px;
+
+      font-weight: 900;
+
+      letter-spacing: -1px;
+    }
+
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .nav {
+
+      display: flex;
+
+      gap: 8px;
+
+      flex-wrap: wrap;
+    }
+
+
+    .nav a {
+
+      padding: 9px 15px;
+
+      border-radius: 10px;
+
+      font-weight: 800;
+
+      background:
+        linear-gradient(
+          #24536f,
+          #14364b
+        );
+
+      border:
+        1px solid rgba(255,255,255,.2);
+
+      box-shadow:
+        inset 0 1px rgba(255,255,255,.15),
+        0 3px 7px rgba(0,0,0,.3);
+
+      transition: .2s;
+    }
+
+
+    .nav a:hover {
+
+      background:
+        linear-gradient(
+          #31d2ff,
+          #087db8
+        );
+
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 0 15px rgba(30,210,255,.4);
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+
+      max-width: 1250px;
+
+      margin: 25px auto;
+
+      padding: 0 20px;
+    }
+
+
+    .hero-box {
+
+      min-height: 350px;
+
+      border-radius: 22px;
+
+      overflow: hidden;
+
+      position: relative;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,.85),
+          rgba(0,0,0,.2)
+        ),
+        url("images/home-banner.jpg");
+
+      background-size: cover;
+
+      background-position: center;
+
+      border:
+        4px solid #1b506d;
+
+      box-shadow:
+        0 10px 35px rgba(0,0,0,.6);
+
+      transition: .3s;
+    }
+
+
+    .hero-box:hover {
+
+      border-color: #2bd0ff;
+
+      box-shadow:
+        0 0 30px rgba(0,200,255,.25),
+        0 10px 35px rgba(0,0,0,.6);
+    }
+
+
+    .hero-content {
+
+      width: 100%;
+
+      padding: 35px;
+
+      background:
+        linear-gradient(
+          transparent,
+          rgba(0,0,0,.85)
+        );
+    }
+
+
+    .hero-content h1 {
+
+      font-size: 42px;
+
+      font-weight: 900;
+
+      text-shadow:
+        3px 4px 0 #111,
+        0 0 15px rgba(255,255,255,.15);
+    }
+
+
+    .hero-content p {
+
+      font-size: 18px;
+
+      margin-top: 5px;
+
+      color: #dff7ff;
+    }
+
+
+    .hero-button {
+
+      display: inline-block;
+
+      margin-top: 18px;
+
+      padding: 12px 25px;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          #ffd84a,
+          #e99c00
+        );
+
+      color: #3d2500;
+
+      font-weight: 900;
+
+      border:
+        2px solid white;
+
+      box-shadow:
+        0 4px 12px rgba(0,0,0,.4);
+
+      transition: .2s;
+    }
+
+
+    .hero-button:hover {
+
+      transform:
+        scale(1.06);
+
+      box-shadow:
+        0 0 20px rgba(255,210,50,.5);
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+
+      max-width: 1250px;
+
+      margin: 30px auto;
+
+      padding: 0 20px;
+    }
+
+
+    .section-title {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 15px;
+
+      font-size: 25px;
+
+      font-weight: 900;
+    }
+
+
+    .section-title::before {
+
+      content: "";
+
+      width: 9px;
+
+      height: 32px;
+
+      border-radius: 10px;
+
+      background: #25c8ff;
+
+      box-shadow:
+        0 0 12px #25c8ff;
+    }
+
+
+    /* =========================
+       CARTOON GRID
+    ========================= */
+
+    .cartoon-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 18px;
+    }
+
+
+    .cartoon-card {
+
+      position: relative;
+
+      overflow: hidden;
+
+      min-height: 220px;
+
+      border-radius: 17px;
+
+      background: #132c3d;
+
+      border:
+        3px solid #24516a;
+
+      box-shadow:
+        0 6px 15px rgba(0,0,0,.45);
+
+      transition:
+        transform .2s,
+        border-color .2s,
+        box-shadow .2s;
+    }
+
+
+    .cartoon-card:hover {
+
+      transform:
+        translateY(-7px)
+        scale(1.02);
+
+      border-color: #2bd0ff;
+
+      box-shadow:
+        0 0 25px rgba(30,200,255,.25),
+        0 10px 20px rgba(0,0,0,.5);
+    }
+
+
+    .cartoon-card img {
+
+      width: 100%;
+
+      height: 100%;
+
+      min-height: 220px;
+
+      object-fit: cover;
+
+      display: block;
+
+      transition: .3s;
+    }
+
+
+    .cartoon-card:hover img {
+
+      transform:
+        scale(1.05);
+    }
+
+
+    .cartoon-info {
+
+      position: absolute;
+
+      bottom: 0;
+
+      left: 0;
+
+      right: 0;
+
+      padding: 14px;
+
+      background:
+        linear-gradient(
+          transparent,
+          rgba(0,0,0,.95)
+        );
+    }
+
+
+    .cartoon-info h3 {
+
+      font-size: 19px;
+
+      font-weight: 900;
+    }
+
+
+    .cartoon-info span {
+
+      font-size: 13px;
+
+      color: #bceeff;
+    }
+
+
+    /* =========================
+       CATEGORIES
+    ========================= */
+
+    .category-grid {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 15px;
+    }
+
+
+    .category {
+
+      padding: 22px;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #164662,
+          #0d2637
+        );
+
+      border:
+        2px solid #28607d;
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,.3);
+
+      font-size: 20px;
+
+      font-weight: 900;
+
+      transition: .2s;
+    }
+
+
+    .category:hover {
+
+      background:
+        linear-gradient(
+          135deg,
+          #21c9ff,
+          #096b9d
+        );
+
+      transform:
+        translateY(-3px);
+
+      box-shadow:
+        0 0 20px rgba(30,200,255,.3);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+
+      margin-top: 50px;
+
+      padding: 35px 20px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          #102b3e,
+          #07141e
+        );
+
+      border-top:
+        3px solid #1d526e;
+
+      color: #a9c4d2;
+    }
+
+
+    footer strong {
+
+      color: white;
+
+      font-size: 20px;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 950px) {
+
+      .cartoon-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+
+      .category-grid {
+
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+
+      .hero-content h1 {
+
+        font-size: 32px;
+      }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+      .topbar-inner {
+
+        flex-direction: column;
+      }
+
+
+      .nav {
+
+        width: 100%;
+
+        justify-content: center;
+      }
+
+
+      .nav a {
+
+        font-size: 13px;
+      }
+
+
+      .hero-box {
+
+        min-height: 300px;
+      }
+
+
+      .hero-content {
+
+        padding: 22px;
+      }
+
+
+      .hero-content h1 {
+
+        font-size: 27px;
+      }
+
+
+      .cartoon-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+
+      .category-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================= -->
+
+  <header class="topbar">
+
+    <div class="topbar-inner">
+
+      <a href="/" class="logo">
+
+        <span class="logo-badge">
+          CN
+        </span>
+
+        <span>
+          CN Arabia
+        </span>
+
+      </a>
+
+
+      <nav class="nav">
+
+        <a href="/">
+          الرئيسية
+        </a>
+
+        <a href="#cartoons">
+          الكرتون
+        </a>
+
+        <a href="#categories">
+          الأقسام
+        </a>
+
+        <a href="#">
+          جديد
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <section class="hero">
+
+    <div class="hero-box">
+
+      <div class="hero-content">
+
+        <h1>
+          CN Arabia
+        </h1>
+
+        <p>
+          عالم الكرتون والدبلجة العربية
+        </p>
+
+        <a
+          href="#cartoons"
+          class="hero-button"
+        >
+          ابدأ المشاهدة
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       CARTOONS
+  ========================= -->
+
+  <section
+    class="section"
+    id="cartoons"
+  >
+
+    <h2 class="section-title">
+      مسلسلات الكرتون
+    </h2>
+
+
+    <div class="cartoon-grid">
+
+
+      <!-- GUMBALL -->
+
+      <a
+        href="gumball/"
+        class="cartoon-card"
+      >
+
+        <img
+          src="images/gumball.jpg"
+          alt="عالم غامبول المدهش"
+        >
+
+        <div class="cartoon-info">
+
+          <h3>
+            عالم غامبول المدهش
+          </h3>
+
+          <span>
+            جميع المواسم
+          </span>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- CLARENCE -->
+
+      <a
+        href="clarence/"
+        class="cartoon-card"
+      >
+
+        <img
+          src="images/clarence.jpg"
+          alt="كلارنس"
+        >
+
+        <div class="cartoon-info">
+
+          <h3>
+            كلارنس
+          </h3>
+
+          <span>
+            جميع الحلقات
+          </span>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- ADVENTURE TIME -->
+
+      <a
+        href="#"
+        class="cartoon-card"
+      >
+
+        <img
+          src="images/adventure-time.jpg"
+          alt="وقت المغامرة"
+        >
+
+        <div class="cartoon-info">
+
+          <h3>
+            وقت المغامرة
+          </h3>
+
+          <span>
+            قريباً
+          </span>
+
+        </div>
+
+      </a>
+
+
+
+      <!-- REGULAR SHOW -->
+
+      <a
+        href="#"
+        class="cartoon-card"
+      >
+
+        <img
+          src="images/regular-show.jpg"
+          alt="العرض العادي"
+        >
+
+        <div class="cartoon-info">
+
+          <h3>
+            العرض العادي
+          </h3>
+
+          <span>
+            قريباً
+          </span>
+
+        </div>
+
+      </a>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       CATEGORIES
+  ========================= -->
+
+  <section
+    class="section"
+    id="categories"
+  >
+
+    <h2 class="section-title">
+      الأقسام
+    </h2>
+
+
+    <div class="category-grid">
+
+      <a href="#" class="category">
+        ⭐ الأكثر مشاهدة
+      </a>
+
+      <a href="#" class="category">
+        🆕 الحلقات الجديدة
+      </a>
+
+      <a href="#" class="category">
+        🎬 جميع المسلسلات
+      </a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
+  <footer>
+
+    <strong>
+      CN Arabia
+    </strong>
+
+    <br>
+
+    موقع لمشاهدة مسلسلات الكرتون بالدبلجة العربية
+
+    <br><br>
+
+    © 2026 CN Arabia
+
+  </footer>
+
+
+</body>
 </html>
