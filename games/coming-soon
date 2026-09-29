@@ -1,1 +1,690 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>CN Arabia | الألعاب</title>
+
+  <link rel="icon" href="../orglogo.png">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Cairo", sans-serif;
+      color: white;
+
+      display: flex;
+      flex-direction: column;
+
+      min-height: 100vh;
+
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(0, 210, 255, .4),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 75%,
+          rgba(150, 0, 255, .35),
+          transparent 30%
+        ),
+        linear-gradient(
+          120deg,
+          #061522,
+          #102b45,
+          #07121e
+        );
+
+      background-size: 180% 180%;
+
+      animation:
+        backgroundColors 6s ease-in-out infinite;
+    }
+
+
+    @keyframes backgroundColors {
+
+      0% {
+        background:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 210, 255, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(30, 70, 255, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #061522,
+            #102b45,
+            #07121e
+          );
+      }
+
+      25% {
+        background:
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(255, 0, 180, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 15% 85%,
+            rgba(120, 0, 255, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #170621,
+            #32103f,
+            #0c1025
+          );
+      }
+
+      50% {
+        background:
+          radial-gradient(
+            circle at 15% 75%,
+            rgba(0, 255, 170, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 85% 25%,
+            rgba(0, 180, 255, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #061f20,
+            #063c4c,
+            #06151d
+          );
+      }
+
+      75% {
+        background:
+          radial-gradient(
+            circle at 80% 75%,
+            rgba(255, 120, 0, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 0, 80, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #241007,
+            #42200c,
+            #10151e
+          );
+      }
+
+      100% {
+        background:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 210, 255, .45),
+            transparent 32%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(30, 70, 255, .35),
+            transparent 32%
+          ),
+          linear-gradient(
+            120deg,
+            #061522,
+            #102b45,
+            #07121e
+          );
+      }
+
+    }
+
+
+    /* MOVING GLOW */
+
+    body::before,
+    body::after {
+
+      content: "";
+
+      position: fixed;
+
+      width: 500px;
+      height: 500px;
+
+      border-radius: 50%;
+
+      filter: blur(110px);
+
+      opacity: .2;
+
+      pointer-events: none;
+
+      z-index: -1;
+    }
+
+
+    body::before {
+
+      background: #00c8ff;
+
+      top: -250px;
+      left: -200px;
+
+      animation:
+        glowOne 12s ease-in-out infinite alternate;
+    }
+
+
+    body::after {
+
+      background: #ff00cc;
+
+      right: -200px;
+      bottom: -250px;
+
+      animation:
+        glowTwo 15s ease-in-out infinite alternate;
+    }
+
+
+    @keyframes glowOne {
+
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(50vw, 40vh) scale(1.2);
+      }
+
+      100% {
+        transform: translate(70vw, 10vh) scale(.9);
+      }
+
+    }
+
+
+    @keyframes glowTwo {
+
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      50% {
+        transform: translate(-50vw, -40vh) scale(1.25);
+      }
+
+      100% {
+        transform: translate(-20vw, -60vh) scale(.9);
+      }
+
+    }
+
+
+    /* HEADER */
+
+    .topbar {
+
+      background:
+        linear-gradient(
+          rgba(15, 50, 75, .96),
+          rgba(5, 20, 32, .96)
+        );
+
+      border-bottom: 4px solid #20caff;
+
+      box-shadow:
+        0 5px 25px rgba(0,0,0,.55);
+
+      position: relative;
+      z-index: 10;
+    }
+
+
+    .topbar-inner {
+
+      max-width: 1250px;
+
+      min-height: 75px;
+
+      margin: auto;
+
+      padding: 10px 20px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+    }
+
+
+    .logo {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      font-size: 30px;
+
+      font-weight: 900;
+
+      text-shadow:
+        2px 3px 0 #006f9c,
+        0 4px 12px rgba(0,0,0,.7);
+    }
+
+
+    .logo-badge {
+
+      width: 52px;
+      height: 52px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #222,
+          #050505
+        );
+
+      border: 3px solid white;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 18px;
+
+      font-weight: 900;
+    }
+
+
+    .home-button {
+
+      padding: 10px 18px;
+
+      border-radius: 10px;
+
+      background:
+        linear-gradient(
+          #24536f,
+          #14364b
+        );
+
+      border: 1px solid rgba(255,255,255,.25);
+
+      font-weight: 800;
+
+      transition: .2s;
+    }
+
+
+    .home-button:hover {
+
+      background:
+        linear-gradient(
+          #31d2ff,
+          #087db8
+        );
+
+      transform: translateY(-2px);
+    }
+
+
+    /* MAIN */
+
+    main {
+
+      flex: 1;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 40px 20px;
+    }
+
+
+    .coming-soon {
+
+      width: 100%;
+
+      max-width: 850px;
+
+      padding: 65px 40px;
+
+      text-align: center;
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(20,55,75,.9),
+          rgba(5,20,32,.9)
+        );
+
+      border:
+        3px solid rgba(40,200,255,.45);
+
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.55),
+        inset 0 1px rgba(255,255,255,.15);
+
+      backdrop-filter: blur(12px);
+    }
+
+
+    .game-icon {
+
+      width: 110px;
+      height: 110px;
+
+      margin: 0 auto 25px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #31d2ff,
+          #087db8
+        );
+
+      border: 4px solid white;
+
+      box-shadow:
+        0 0 35px rgba(0,200,255,.4);
+
+      font-size: 55px;
+
+      animation:
+        floating 3s ease-in-out infinite;
+    }
+
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+
+    }
+
+
+    .coming-soon h1 {
+
+      font-size: 48px;
+
+      font-weight: 900;
+
+      text-shadow:
+        3px 4px 0 #111;
+
+      margin-bottom: 12px;
+    }
+
+
+    .arabic-message {
+
+      font-size: 24px;
+
+      font-weight: 800;
+
+      color: #e9faff;
+
+      line-height: 1.8;
+    }
+
+
+    .english-message {
+
+      direction: ltr;
+
+      font-family: Arial, sans-serif;
+
+      font-size: 18px;
+
+      color: #a9dff0;
+
+      margin-top: 12px;
+
+      line-height: 1.6;
+    }
+
+
+    .working {
+
+      display: inline-block;
+
+      margin-top: 28px;
+
+      padding: 12px 24px;
+
+      border-radius: 12px;
+
+      background:
+        linear-gradient(
+          #ffd84a,
+          #e99c00
+        );
+
+      color: #3d2500;
+
+      border: 2px solid white;
+
+      font-weight: 900;
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,.4);
+    }
+
+
+    /* FOOTER */
+
+    footer {
+
+      padding: 30px 20px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          #102b3e,
+          #07141e
+        );
+
+      border-top: 3px solid #1d526e;
+
+      color: #a9c4d2;
+    }
+
+
+    footer strong {
+
+      color: white;
+
+      font-size: 20px;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .topbar-inner {
+
+        flex-direction: column;
+      }
+
+      .coming-soon {
+
+        padding: 45px 20px;
+      }
+
+      .coming-soon h1 {
+
+        font-size: 35px;
+      }
+
+      .arabic-message {
+
+        font-size: 19px;
+      }
+
+      .english-message {
+
+        font-size: 15px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- HEADER -->
+
+  <header class="topbar">
+
+    <div class="topbar-inner">
+
+      <a href="../" class="logo">
+
+        <span class="logo-badge">
+          CN
+        </span>
+
+        <span>
+          CN Arabia
+        </span>
+
+      </a>
+
+
+      <a
+        href="../"
+        class="home-button"
+      >
+        الرئيسية
+      </a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- COMING SOON -->
+
+  <main>
+
+    <section class="coming-soon">
+
+      <div class="game-icon">
+        🎮
+      </div>
+
+
+      <h1>
+        ألعاب CN Arabia
+      </h1>
+
+
+      <p class="arabic-message">
+        عذراً! صفحة الألعاب ستتوفر قريباً جداً!
+        <br>
+        نحن نعمل عليها حالياً ونجهز لكم مجموعة من ألعاب الكرتون الرائعة.
+      </p>
+
+
+      <p class="english-message">
+        Sorry! The games page is coming very soon!
+        <br>
+        We're currently working on it and preparing some awesome cartoon games for you.
+      </p>
+
+
+      <div class="working">
+        🚧 قريباً جداً!
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <strong>
+      CN Arabia
+    </strong>
+
+    <br><br>
+
+    الألعاب قادمة قريباً
+
+    <br><br>
+
+    © 2026 CN Arabia
+
+  </footer>
+
+
+</body>
+</html>
