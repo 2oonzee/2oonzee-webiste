@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CN Arabia | عالم الكرتون</title>
+  <title>كرتون نتورك بالعربية | عالم الكرتون</title>
 
   <link rel="icon" href="orglogo.png">
 
@@ -395,7 +395,7 @@
 
       gap: 12px;
 
-      font-size: 30px;
+      font-size: 24px;
 
       font-weight: 900;
 
@@ -501,6 +501,34 @@
 
       box-shadow:
         0 0 15px rgba(30,210,255,.4);
+    }
+
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .nav-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      font-size: 15px;
+      line-height: 1;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+    }
+
+    .logo-badge {
+      width: auto;
+      min-width: 64px;
+      padding: 0 8px;
+      font-size: 13px;
+      white-space: nowrap;
+      letter-spacing: 0;
     }
 
 
@@ -809,7 +837,7 @@
       display: grid;
 
       grid-template-columns:
-        repeat(3, 1fr);
+        repeat(4, 1fr);
 
       gap: 15px;
     }
@@ -990,32 +1018,41 @@
 
       <a href="/" class="logo">
 
-        <span class="logo-badge">
-          CN
+        <span class="logo-badge" aria-hidden="true">
+          كرتون
         </span>
 
         <span>
-          CN Arabia
+          كرتون نتورك بالعربية
         </span>
 
       </a>
 
 
-      <nav class="nav">
+      <nav class="nav" aria-label="التنقل الرئيسي">
 
         <a href="/">
+          <span class="nav-icon" aria-hidden="true">⌂</span>
           الرئيسية
         </a>
 
         <a href="#cartoons">
+          <span class="nav-icon" aria-hidden="true">🎬</span>
           الكرتون
         </a>
 
+        <a href="games/">
+          <span class="nav-icon" aria-hidden="true">🎮</span>
+          الألعاب
+        </a>
+
         <a href="#categories">
+          <span class="nav-icon" aria-hidden="true">▦</span>
           الأقسام
         </a>
 
         <a href="#">
+          <span class="nav-icon" aria-hidden="true">★</span>
           جديد
         </a>
 
@@ -1038,7 +1075,7 @@
       <div class="hero-content">
 
         <h1>
-          CN Arabia
+          كرتون نتورك بالعربية
         </h1>
 
         <p>
@@ -1222,6 +1259,10 @@
         🎬 جميع المسلسلات
       </a>
 
+      <a href="games/" class="category">
+        🎮 الألعاب
+      </a>
+
     </div>
 
   </section>
@@ -1235,7 +1276,7 @@
   <footer>
 
     <strong>
-      CN Arabia
+      كرتون نتورك بالعربية
     </strong>
 
     <br>
@@ -1244,7 +1285,7 @@
 
     <br><br>
 
-    © 2026 CN Arabia
+    © 2026 كرتون نتورك بالعربية
 
   </footer>
 
